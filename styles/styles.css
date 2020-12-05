@@ -1,0 +1,24 @@
+
+*::after,
+*::before{
+    margin: 0;
+    padding: 0%;
+    box-sizing: inherit;
+}
+html{
+    font-size: 10px;
+}
+body{
+    box-sizing: border-box;
+    background-image: url("/Users/mainframe/practice_code/tetris/Game/Images/klipartz.com (11).png");
+    background-repeat: repeat;
+}
+#container{
+    width: 80%vw;
+    height: 700px;
+    background-image: url("/Users/mainframe/practice_code/tetris/Game/Images/yggdrasil.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+}
