@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>9 Realms of Yggdrasil</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="/Users/mainframe/code/README/script/app.js" charset="utf-8"></script>
     <link rel="stylesheet" href="/Users/mainframe/code/README/styles/styles.css">
@@ -11,7 +11,25 @@
 <body>
     <nav>
         <div id="life-points"></div>
-        <button id="restart">Restart</button>
+        <button id="restart-btn">Restart</button>
+        <!-- Start Game Modal -->
+        <button id="play-btn">Play</button>
+        <div id = "intro-modal">
+            <div id="intro-text">
+                <a id="close" href="#">Close</a>
+                <h1>Our home<br> <span>Midgard</span><br> is under attack</h1>
+                <p>Our beloved earth is under attack from the feared giant Ymir. The gods of Asgard have been in their own long 
+                    war with the gods in Vanaheim and there is no knowing if the Gods can spare any mercy. You have casted your
+                    runes and it is clear you must ask for help. But the Gods never give without an exchange of some kind...
+                </p>
+                <h3>Instructions</h3>
+                <p>Navigate the 9 realms of Yggdrassil to restore balance to the universe. As you traverse you will find those who wish to help
+                    and those who wish to decieve you. You alone write your fate. As you meet with enemies you must fight and choose your attack
+                    wisely. If you loose all your life-points you are defeated.
+                </p>
+                <button id="character-btn">Choose Character</button>
+            </div>
+        </div>
     </nav>
     <main>
         <div id="container"></div>
@@ -19,7 +37,7 @@
         </div>
     </main>
     <footer>
-        <div id="title-name"></div>
+        <div id="title-name">Insert Character Name</div>
         <div id="character-img"></div>
     </footer>
     

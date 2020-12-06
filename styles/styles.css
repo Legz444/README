@@ -13,6 +13,48 @@ body{
     background-image: url("/Users/mainframe/practice_code/tetris/Game/Images/klipartz.com (11).png");
     background-repeat: repeat;
 }
+
+
+/* IntroModal Styles */
+#intro-modal{
+    position: absolute;
+    width: 100vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(0, 0, 255, 0.5);
+    display: none;
+    z-index: 10;
+
+}
+#intro-text{
+    font-size: 1.5rem;
+    color: white;
+    width: 25vw;
+    text-align: center;
+    margin: auto;
+}
+span{
+    font-size: 3rem;
+}
+#close:link{
+    color: white;
+}
+#close:visited{
+    color: red;
+}
+#close:hover{
+    color: black;
+    background-color: white;
+}
+
+/* Main game styles */
+
+nav{
+    border: 1px solid white;
+} 
+
 #container{
     width: 80%vw;
     height: 700px;
@@ -21,4 +63,8 @@ body{
     background-position: center;
     background-size: contain;
 
+}
+
+footer{
+    border: 1px solid white;
 }
