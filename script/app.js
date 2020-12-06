@@ -22,7 +22,7 @@ class Character{
     // }
 }
 const Embla = new Character ("Embla", "100", ["Prayer : 20"], ["Simple Curse: 20"]); ///can I list key value pairs within an array this way?//
-const Ask = new Character ("Ask", "100", ["Leaves: 20"], ["Arrows: 20"]);
+const Ask = new Character ("Ask", "100", ["Leaves: 20"], ["Spear: 20"]);
 
 
 //enemy class
@@ -60,6 +60,12 @@ const $modalText = $("#intro-text")//modal text
 const $openModal = $("#play-btn")//play button starts modal
 const $closeModal = $("#close")//close link to close modal
 
+const $charModal = $("#character-modal")//character modal container
+const $charText = $("#character-text")//character modal text box
+const $openChar = $("#character-btn")//open character modal
+const $closeChar = $("#close-char")//close link for character modal
+
+
     //create Event Handlers//
 const openIntro = (event) => {
     $modal.css("display", "flex");
@@ -67,10 +73,18 @@ const openIntro = (event) => {
 const closeIntro = (event) =>{
     $modal.css("display", "none");
 }
+const chooseChar = (event) =>{
+    $charModal.css("display", "flex");
+    $modal.css("display", "none");
+}
+const closeChar = (event) => {
+    $charModal.css("display", "none");
+}
 //create Event Listeners//
 $openModal.on('click', openIntro);
 $closeModal.on('click', closeIntro);
-
+$openChar.on('click', chooseChar);
+$closeChar.on('click', closeChar);
 });
 //create Event Handlers//
 
