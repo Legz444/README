@@ -23,7 +23,7 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color: rgba(0, 0, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
     z-index: 10;
 
@@ -31,7 +31,7 @@ body{
 #intro-text, #character-text{
     font-size: 1.5rem;
     color: white;
-    width: 25vw;
+    width: 30vw;
     text-align: center;
     margin: auto;
 }
@@ -50,26 +50,6 @@ span{
     color: black;
     background-color: white;
 }
-
-/* Character Modal Styles */
-/* #character-modal{
-    position: absolute;
-    width: 100vw;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: rgba(0, 0, 255, 0.5);
-    display: flex;
-    z-index: 10;
-
-} */
-/* #character-text{ 
-    font-size: 1.5rem;
-    color: white;
-    text-align: center;
-    margin: auto;
-} */
 #characters {
     display: flex;
 }
@@ -77,6 +57,7 @@ span{
     justify-content: space-between;
 }
 /* Main game styles */
+
 
 nav{
     border: 1px solid white;
@@ -94,4 +75,18 @@ nav{
 
 footer{
     border: 1px solid white;
+}
+
+.current__player{
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+}
+.midgard__btn{
+    position:absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
