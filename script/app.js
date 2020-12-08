@@ -23,6 +23,16 @@ class Character{
                 }
         }
     }
+    midgard = () => {
+        let answer = prompt("Odin has answered your prayers! But it comes at a price. He has promised to help you save Midgard if you can retrieve the peace offering from Vanaheim and return back through the 9 realms to deliver it to Asgard. Do you accept the challenge?", "yes/no");
+            if(answer === "yes"){
+                Character.increaseLife();
+            }else if(answer === "no"){
+                alert("GAME OVER");
+            }
+            console.log(Ask);
+            console.log(Embla);
+    } 
 }
 const Embla = new Character ("Embla", "100", ["Prayer : 20"], ["Simple Curse: 20"]); ///can I list key value pairs within an array this way?//
 const Ask = new Character ("Ask", "100", ["Leaves: 20"], ["Spear: 20"]);
@@ -53,16 +63,7 @@ const modgudr = new Enemy("Modgudr", "maer", "150", "100");
 const Surtr = new Enemy("Surtr", "Fire Giant", "300", "150");
 
 
-const midgard = () => {
-    let answer = prompt("Odin has answered your prayers! But it comes at a price. He has promised to help you save Midgard if you can retrieve the peace offering from Vanaheim and return back through the 9 realms to deliver it to Asgard. Do you accept the challenge?", "yes/no");
-        if(answer === "yes"){
-            Character.lifepoints += 100;
-        }else if(answer === "no"){
-            alert("GAME OVER");
-        }
-        console.log(Ask);
-        console.log(Embla);
-} 
+
 
 
 $( () => {
@@ -129,7 +130,7 @@ $closeChar.on('click', closeChar);
 $Ask.on('click', createAsk);
 $Embla.on('click', createEmbla);
 //playGame//
-$Level1btn.on('click', midgard);
+$Level1btn.on('click', Character.midgard);
 
 });
 
