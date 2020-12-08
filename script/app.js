@@ -53,8 +53,16 @@ const modgudr = new Enemy("Modgudr", "maer", "150", "100");
 const Surtr = new Enemy("Surtr", "Fire Giant", "300", "150");
 
 
-
-//introduction modal//  
+const midgard = () => {
+    let answer = prompt("Odin has answered your prayers! But it comes at a price. He has promised to help you save Midgard if you can retrieve the peace offering from Vanaheim and return back through the 9 realms to deliver it to Asgard. Do you accept the challenge?", "yes/no");
+        if(answer === "yes"){
+            Character.lifepoints += 100;
+        }else if(answer === "no"){
+            alert("GAME OVER");
+        }
+        console.log(Ask);
+        console.log(Embla);
+} 
 
 
 $( () => {
@@ -69,14 +77,19 @@ const $charModal = $("#character-modal");//character modal container
 const $charText = $("#character-text");//character modal text box
 const $openChar = $("#character-btn");//open character modal
 const $closeChar = $("#close-char");//close link for character modal
+const $buttons = $(".game");
 //start Game//
 const $Ask = $("#ask");
 const $Embla = $("#embla");
-
+//play Game//
+const $Level1btn = $("#midgard__btn");
+const $Level2btn = $("#vanaheim__btn");
 ///////////////////////////create Event Handlers/////////////////////////////
 //intro modal//
 const openIntro = (event) => {
     $modal.css("display", "flex");
+    $buttons.css("display", "none");
+
 }
 const closeIntro = (event) =>{
     $modal.css("display", "none");
@@ -95,24 +108,16 @@ const createAsk = (event) => {
     $charModal.css("display", "none");
     const $currentPlayer = $(`<div class="current__player"><h1>Ask~Viking</h1><img src="/Users/mainframe/code/README/Images/vikingcharacter.png" alt="Viking Character" width="250px" height="200px"></div>`);
     $("body").append($currentPlayer);
-    const $Midgardbtn = $(`<button class="midgard__btn">Ask Odin for Help</button>`);
-    $("body").append($Midgardbtn);
+    $Level1btn.css("display", "flex");
+
 }
 const createEmbla = (event) => {
     $charModal.css("display", "none");
     const $currentPlayer = $(`<div class="current__player"><h1>Embla~Seiðr</h1><img src="/Users/mainframe/code/README/Images/sorceress.png" alt="Norse Witch Character" width="150px" height="200px"></div>`);
     $("body").append($currentPlayer);
-    const $Midgardbtn = $(`<button class="midgard__btn">Ask Odin for Help</button>`);
-    $("body").append($Midgardbtn);
+    $Level1btn.css("display", "flex");
 }
-// const midgard = (event) => {
-//     $charModal.css("display", "none");
-//     prompt("Odin has given his word to help you defeat the giant Ymir for a price. Asgard and Vanaheim are ready to make peace and yet Odin still will not leave Asgard unprotected. He has asked you to venture to Vanaheim and return to him the peace offering. Do you accept the challenge?", "yes/no");
-//     if(prompt === "yes"){
-//         const currentPlayer = $(`<div>${this.name}`)
 
-// }
-// }
 /////////////////////////create Event Listeners///////////////////////////////
 //intro modal//
 $openModal.on('click', openIntro);
@@ -123,14 +128,25 @@ $closeChar.on('click', closeChar);
 //start game//
 $Ask.on('click', createAsk);
 $Embla.on('click', createEmbla);
-
+//playGame//
+$Level1btn.on('click', midgard);
 
 });
 
-
 //9 Realms functions//
-// const vanaheim = () => {
-//     Character.lifepoints += 100;
-//     console.log(Ask);
-//     console.log(Embla);
+//variables//
+// const Level1btn = document.getElementsByClassName(".midgard__btn");
+
+// //event listeners//
+// Level1btn.addEventListener("click", midgard)
+
+// //functions//
+// const midgard = () => {
+//         prompt("Odin has answered your prayers! But it comes at a price. He has promised to help you save Midgard if you can retrieve the peace offering from Vanaheim and return back through the 9 realms to deliver it to Asgard. Do you accept the challenge?", "yes/no");
+//         if(prompt === "yes"){
+//             Character.lifepoints += 100;
+//         }else if(prompt === "no"){
+//             alert("GAME OVER");
+//         }
 // }
+
