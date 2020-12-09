@@ -28,13 +28,13 @@ class Character{
                 console.log(this.lifepoints);
                 document.getElementById("midgard__btn").style.display = "none";
                 document.getElementById("vanaheim__btn").style.display = "flex";
-                this.vanaheim();
-                //run vanaheim level function which hides midgard button and displays
+                document.getElementById("vanaheim__btn").addEventListener("click", this.vanaheim); 
             }else if(answer === "no"){
                 alert("GAME OVER");
             }
     }
     vanaheim(){
+        const level2btn = document.addEventListener("click", this.vanaheim);
         let level2 = prompt("Odin transported you to Vanaheim and gave you some lifepoints for your journey. You are met by Frejya and Freyr the gods of fertility. It's hard to leave such a perfect and pleasurable place. Can you resist their desire to have to stay and forget about Odin and Midgard?", "yes/no");
         if(level2 === "yes"){
             alert("GAME OVER");
@@ -120,7 +120,7 @@ const $Ask = $("#ask");
 const $Embla = $("#embla");
 //play Game//
 const $Level1btn = $("#midgard__btn");
-const $Level2btn = $("#vanaheim__btn");
+
 ///////////////////////////create Event Handlers/////////////////////////////
 //intro modal//
 const openIntro = (event) => {
@@ -159,6 +159,8 @@ const createEmbla = (event) => {
     Embla = new Character ("Embla", 100, ["Prayer : 20"], ["Simple Curse: 20"]);
     $Level1btn.on('click', Embla.midgard);
 }
+//play game//
+
 
 /////////////////////////create Event Listeners///////////////////////////////
 //intro modal//
@@ -171,7 +173,7 @@ $closeChar.on('click', closeChar);
 $Ask.on('click', createAsk);
 $Embla.on('click', createEmbla);
 //playGame//
-// $Level1btn.on('click', Character.midgard);
+
 
 });
 
