@@ -72,6 +72,19 @@ nav{
     background-size: contain;
 
 }
+#stats{
+    color: white;
+    display: flex-box;
+    float: right;
+    z-index: 10;
+    width: 300px;
+
+}
+#lifepoints, #healing, #attack{
+    text-align: center;
+    min-height: 200px;
+
+}
 
 footer{
     border: 1px solid white;
@@ -128,13 +141,17 @@ footer{
 }
 #hel__btn{
     position: absolute;
-    top: 75%;
+    top: 68%;
     left: 48%;
     transform: translate(-50%, -50%);
 }
 #niflheim__btn{
     position: absolute;
-    top: 90%;
-    left: 61%;
+    top: 80%;
+    left: 51%;
     transform: translate(-50%, -50%);
+}
+
+#hel-modal{
+display: none;
 }
