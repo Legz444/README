@@ -4,16 +4,14 @@ console.log($);
 
 class Character{
     constructor(name, lifepoints, healing=[], attack=[]){
-    this.name = name,
-    this.lifepoints = lifepoints,
-    this.healing = healing,
+    this.name = name
+    this.lifepoints = lifepoints
+    this.healing = healing
     this.attack = attack
-    }
-    increaseLife(){
-        this.lifepoints += 100;
+    this.midgard = this.midgard.bind(this)
     }
 
-    characterDeath(){
+    death(){
         if(this.lifepoints <= 0){
             prompt(`${this.name} has been defeated by ${Enemy.name}. You have failed Odin and Midgard will be destroyed by Ymir. Frigg, Odins wife has faith in you and is offering to bring you back to life but you must begin again. Replay?, "yes/no"`)
                 if(prompt === yes){
@@ -23,21 +21,59 @@ class Character{
                 }
         }
     }
-    midgard = () => {
+    midgard(){
         let answer = prompt("Odin has answered your prayers! But it comes at a price. He has promised to help you save Midgard if you can retrieve the peace offering from Vanaheim and return back through the 9 realms to deliver it to Asgard. Do you accept the challenge?", "yes/no");
             if(answer === "yes"){
-                Character.increaseLife();
+                this.lifepoints += 100;
+                console.log(this.lifepoints);
+                document.getElementById("midgard__btn").style.display = "none";
+                document.getElementById("vanaheim__btn").style.display = "flex";
+                this.vanaheim();
+                //run vanaheim level function which hides midgard button and displays
             }else if(answer === "no"){
                 alert("GAME OVER");
             }
-            console.log(Ask);
-            console.log(Embla);
-    } 
+    }
+    vanaheim(){
+        let level2 = prompt("Odin transported you to Vanaheim and gave you some lifepoints for your journey. You are met by Frejya and Freyr the gods of fertility. It's hard to leave such a perfect and pleasurable place. Can you resist their desire to have to stay and forget about Odin and Midgard?", "yes/no");
+        if(level2 === "yes"){
+            alert("GAME OVER");
+        }else if(level2 === "no"){
+            //push a gift to healing array
+            //hide vanaheim button
+            //show Niflheim button or Hel depending on coding time.
+            //call next level
+        }   
+    }
+    // niflheim(){
+    //     let level3 = prompt("Niflheim is the world of icy desolation. Nothing can exist here. Frejya sent you with the offering but clearly she was dissapointed by you leaving. She did give you a gift for your health...Do you use her gift?", " yes/no");
+    //     if(level3 === "yes"){
+    //         //remove index 1 from healing array//
+    //         //hide niflheim button
+    //         //run next level
+    //     }else if(level3 === "no"){
+    //         let gift = prompt(`Would you like to use ${this.healing[0]}?`, "yes/no");
+    //         if(gift === "yes"){
+    //             //remove index 0 from array//
+    //             this.lifepoints -= 100;
+    //             if(this.lifepoints >= 1){
+    //                 //run next level
+    //             }else{
+    //                 this.death;
+    //             }
+    //         }else if(gift === "no"){
+    //             this.
+    //         }
+    //     }
+    //     }
+
+
 }
-const Embla = new Character ("Embla", "100", ["Prayer : 20"], ["Simple Curse: 20"]); ///can I list key value pairs within an array this way?//
-const Ask = new Character ("Ask", "100", ["Leaves: 20"], ["Spear: 20"]);
-console.log(Embla);
-console.log(Ask);
+// const Embla = new Character ("Embla", "100", ["Prayer : 20"], ["Simple Curse: 20"]); ///can I list key value pairs within an array this way?//
+// const Ask = new Character ("Ask", "100", ["Leaves: 20"], ["Spear: 20"]);
+
+// console.log(Embla);
+// console.log(Ask);
 
 //enemy class
 class Enemy{
@@ -110,6 +146,9 @@ const createAsk = (event) => {
     const $currentPlayer = $(`<div class="current__player"><h1>Ask~Viking</h1><img src="/Users/mainframe/code/README/Images/vikingcharacter.png" alt="Viking Character" width="250px" height="200px"></div>`);
     $("body").append($currentPlayer);
     $Level1btn.css("display", "flex");
+    Ask = new Character ("Ask", 100, ["Leaves: 20"], ["Spear: 20"]);
+    $Level1btn.on('click', Ask.midgard);
+
 
 }
 const createEmbla = (event) => {
@@ -117,6 +156,8 @@ const createEmbla = (event) => {
     const $currentPlayer = $(`<div class="current__player"><h1>Embla~Seiðr</h1><img src="/Users/mainframe/code/README/Images/sorceress.png" alt="Norse Witch Character" width="150px" height="200px"></div>`);
     $("body").append($currentPlayer);
     $Level1btn.css("display", "flex");
+    Embla = new Character ("Embla", 100, ["Prayer : 20"], ["Simple Curse: 20"]);
+    $Level1btn.on('click', Embla.midgard);
 }
 
 /////////////////////////create Event Listeners///////////////////////////////
@@ -130,7 +171,7 @@ $closeChar.on('click', closeChar);
 $Ask.on('click', createAsk);
 $Embla.on('click', createEmbla);
 //playGame//
-$Level1btn.on('click', Character.midgard);
+// $Level1btn.on('click', Character.midgard);
 
 });
 

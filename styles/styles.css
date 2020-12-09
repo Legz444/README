@@ -10,7 +10,7 @@ html{
 }
 body{
     box-sizing: border-box;
-    background-image: url("README/Images/klipartz.com (11).png");
+    background-image: url("/Users/mainframe/practice_code/tetris/Game/Images/klipartz.com (11).png");
     background-repeat: repeat;
 }
 
@@ -66,7 +66,7 @@ nav{
 #container{
     width: 80%vw;
     height: 700px;
-    background-image: url("README/Images/yggdrasil.png");
+    background-image: url("/Users/mainframe/practice_code/tetris/Game/Images/yggdrasil.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -135,6 +135,6 @@ footer{
 #niflheim__btn{
     position: absolute;
     top: 90%;
-    left: 50%;
+    left: 61%;
     transform: translate(-50%, -50%);
 }
