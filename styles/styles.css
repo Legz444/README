@@ -10,7 +10,7 @@ html{
 }
 body{
     box-sizing: border-box;
-    background-image: url("/Users/mainframe/practice_code/tetris/Game/Images/klipartz.com (11).png");
+    background-image: url("README/Images/klipartz.com (11).png");
     background-repeat: no-repeat;
     background-size: 100vw;
 }
