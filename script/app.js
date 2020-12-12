@@ -20,8 +20,11 @@ class Character{
     this.vanaheim = this.vanaheim.bind(this)
     this.niflheim = this.niflheim.bind(this)
     this.hel = this.hel.bind(this)
+    this.nidavellir = this.nidavellir.bind(this)
+    this.muspelheim = this.muspelheim.bind(this)
+    this.asgard = this.asgard.bind(this)
     // this.attackChoice = this.attackChoice.bind(this)
-    this.attackbtn = this.attackbtn.bind(this)
+    // this.attackbtn = this.attackbtn.bind(this)
     }
     displayStats(){
         document.getElementById("display-points").innerHTML = `${this.lifepoints}`;
@@ -124,6 +127,8 @@ class Character{
     nidavellir(){
         let level5 = prompt("You open your eyes to Dwarfs circling you and whispering. Finally one approaches and offers you their Mead of Poetry, a magickal liquid that makes the drinker express their truth compulsively. Do you drink?", "yes/no");
         if(level5 === "yes"){
+            this.lifepoints += 150;
+            this.attack.push("Dwarf Magick: 200");
             document.getElementById("nidavellir__btn").style.display = "none";
             document.getElementById("muspelheim__btn").style.display = "flex";
             document.getElementById("muspelheim__btn").addEventListener("click", this.muspelheim); 
@@ -133,18 +138,34 @@ class Character{
     }
     //level 6//
     muspelheim(){
-        document.getElementById("muspelheim-modal").style.display = "flex";
-        document.getElementById("close-muspelheim").addEventListener("click", this.attackbtn);  
-
+        let level6 = prompt(`You have reached Muspelheim, the world of fire and the home to the great fire giant, Sutr! The dwarfs also have a deep hate of giants and have loaded you up with tools for the fight! Do you A) Attack her with ${this.attack[0]}? or B) Attack her with ${this.attack[1]}? or C) Attack with ${this.attack[2]}`, "A/B/C");
+        if(level6 === "A"){
+            this.lifepoints = 0;
+            this.displayStats();
+            alert(`This was a poor choice. You had very little impact on Sutr. He has attacked you quickly as he was ready and killed you in one fail swoop, Game Over.`);
+        }else if(level6 === "B"){
+            this.lifepoints = 0;
+            this.displayStats();
+            alert(`Unfortunately, the gift from Odin was  no match for Sutr. He retaliated and destroyed you, Game Over.`);
+        }else if(level6 === "C"){ 
+            alert(`You defeated Sutr! Adventure on to Asgard`); //NORMALLY ON TO JOTUNHEIN THEN ALFHEIM//
+            document.getElementById("muspelheim__btn").style.display = "none";
+            document.getElementById("asgard__btn").style.display = "flex";
+            document.getElementById("asgard__btn").addEventListener("click", this.asgard);
+            this.displayStats();
+        }
     }
-    attackbtn(){
-        const attackbtn = document.createElement("BUTTON");
-            attackbtn.innerHTML = "ATTACK";
-            attackbtn.id = "attack-btn"
-            document.body.appendChild(attackbtn);
-            document.getElementById("attack-btn").addEventListener("click", this.attackChoice);
-            document.getElementById("hel-modal").style.display = "none"; 
+    asgard(){
+        alert(`You have returned the peace offering to Odin and he is pleased. His beloved messanger crows have told him or your trials and terrors. He is impressed and will destroy Ymir for your world. You have saved Midgard and Yggdrasil has returned to balance!`);
     }
+    // attackbtn(){
+    //     const attackbtn = document.createElement("BUTTON");
+    //         attackbtn.innerHTML = "ATTACK";
+    //         attackbtn.id = "attack-btn"
+    //         document.body.appendChild(attackbtn);
+    //         document.getElementById("attack-btn").addEventListener("click", this.attackChoice);
+    //         document.getElementById("hel-modal").style.display = "none"; 
+    // }
     // attackbtn(){
     //     const attackbtn = document.createElement("BUTTON");
     //     attackbtn.innerHTML = "ATTACK";
