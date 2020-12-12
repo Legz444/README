@@ -1,6 +1,7 @@
 console.log($);
 
 //character class
+// const fight = () => { document.getElementById("fight-modal")}
 
 class Character{
     constructor(name, lifepoints, healing=[], attack=[]){
@@ -20,15 +21,13 @@ class Character{
     this.niflheim = this.niflheim.bind(this)
     this.hel = this.hel.bind(this)
     this.attackChoice = this.attackChoice.bind(this)
+    this.attackbtn = this.attackbtn.bind(this)
     }
     displayStats(){
-        document.getElementById("display-points").innerText = this.lifepoints;
-        console.log(this.lifepoints);
+        document.getElementById("display-points").innerHTML = `${this.lifepoints}`;
+        document.getElementById("display-healing").innerHTML = `${this.healing}`;
+        document.getElementById("display-attack").innerHTML = `${this.attack}`;
     }
-        // let lifepoints = this.lifepoints
-        // document.getElementById("display-points").innerHTML = lifepoints;}
-        // // return this.healing = document.getElementById("display-healing").innerHTML = `${this.healing}`;
-        // // document.getElementById("display-attack").innerHTML = `${this.attack}`;
     
     death(){
         if(this.lifepoints <= 0){
@@ -53,14 +52,14 @@ class Character{
                 document.getElementById("midgard__btn").style.display = "none";
                 document.getElementById("vanaheim__btn").style.display = "flex";
                 document.getElementById("vanaheim__btn").addEventListener("click", this.vanaheim); 
-                return this;
+                this.displayStats(); 
             }else if(answer === "no"){
                 alert("GAME OVER");
             }
-            this.displayStats; 
+        
     }
     vanaheim(){ 
-        let level2 = prompt("Odin transported you to Vanaheim and gave you some lifepoints for your journey. You are met by Frejya and Freyr the gods of fertility. It's hard to leave such a perfect and pleasurable place. Maybe you should just surrender to their desire to have to stay and forget about Odin and Midgard...", "yes/no");
+        let level2 = prompt("Odin transported you to Vanaheim and gave you some lifepoints and a new weapon for your journey. You are met by Frejya and Freyr the gods of fertility. It's hard to leave such a perfect and pleasurable place. Maybe you should just surrender to their desire to have to stay and forget about Odin and Midgard...", "yes/no");
         if(level2 === "yes"){
             alert("GAME OVER");
         }else{
@@ -69,85 +68,145 @@ class Character{
             document.getElementById("niflheim__btn").style.display = "flex";
             document.getElementById("niflheim__btn").addEventListener("click", this.niflheim);
             console.log(this);
-            return this;
+            this.displayStats();
         }   
     }
+//level3
     niflheim(){
-        let level3 = prompt(`Niflheim is the world of icy desolation. Nothing can exist here. Frejya sent you with the offering but clearly she was dissapointed by you leaving. She did give you a gift for your health...Since you are freezing to death do you: A)Use up the ${this.healing[1]} right away? B)Use your ${this.healing[0]} which is reusuable? C)Treck it and hope for the best?`, " A/B/C");
+        let level3 = prompt(`Niflheim is the world of icy desolation. Nothing can exist here. Frejya sent you with the offering but clearly she was dissapointed by you leaving. She did give you a gift for your health...Since you are freezing to death do you: A)Use up the ${this.healing[1]} right away? B)Use your ${this.healing[0]} which is reusuable but may cost you your life? C)Treck it and hope for the best?`, " A/B/C");
         if(level3 === "A"){
             this.healing.pop([1]);
             document.getElementById("niflheim__btn").style.display = "none";
             document.getElementById("hel__btn").style.display = "flex";
             document.getElementById("hel__btn").addEventListener("click", this.hel);
-            console.log(this);
-            return this;
+            this.displayStats();
         }else if(level3 === "B"){
             this.lifepoints -= 100;
-            console.log(this);
             if(this.lifepoints >= 1){
             document.getElementById("niflheim__btn").style.display = "none";
             document.getElementById("hel__btn").style.display = "flex";
             document.getElementById("hel__btn").addEventListener("click", this.hel);
-            return this;
+            this.displayStats();
             }else{
                 alert(`You have frozen to death and your ${this.healing[0]} was not enough to keep you alive. Game over.`);
-                console.log(this);
-                return this;
+                this.displayStats();
             }
         }else if(level3 === "C"){
             this.lifepoints -= this.lifepoints;
             alert("You have frozen to death. Game Over");
-            console.log(this);
-            return this;
+            this.displayStats();
             }
         }
 //level4
     hel(){
-        document.getElementById("fight-modal").style.display = "flex";
-        document.getElementById("close-fight").addEventListener("click", this.attackChoice);
+        document.getElementById("hel-modal").style.display = "flex";
+        document.getElementById("close-hel").addEventListener("click", this.attack);    
+    }
+    attack(){
+        const attackbtn = document.createElement("BUTTON");
+            attackbtn.innerHTML = "ATTACK";
+            attackbtn.id = "attack-btn"
+            document.body.appendChild(attackbtn);
+            document.getElementById("attack-btn").addEventListener("click", this.attackChoice);
+            document.getElementById("hel-modal").style.display = "none"; 
+    }
+    // attackbtn(){
+    //     const attackbtn = document.createElement("BUTTON");
+    //     attackbtn.innerHTML = "ATTACK";
+    //     attackbtn.id = "attack-btn"
+    //     document.body.appendChild(attackbtn);
+    //     document.getElementById("attack-btn").addEventListener("click", this.attackChoice);
+    //     document.getElementById("hel-modal").style.display = "none";
+    //     this.displayStats();
+    //     modgudr.displayStats();
+    // }
+    // attackChoice(){
+    //     this.displayStats();
+    //     modgudr.displayStats();
+    //     let choice = prompt(`A) Attack using ${this.attack[0]} B)Attack using ${this.attack[1]}.`, "A/B");
         
-    }
+    //     // this.displayStats;
+    //     // modgudr.displayStats;
+    //     if(choice === "A"){
+    //         modgudr.lifepoints -= 20;
+    //         if(modgudr.lifepoints > 0 && this.name === "Ask"){
+    //             // modgudr.displayStats();
+    //             // this.displayStats();
+    //             modgudr.attackAsk();
+    //             return this;
+    //         }else if(modgudr.lifepoints <= 0 && this.name === "Ask"){
+    //             alert("You have defeated Móðguðr!");
+    //             modgudr.displayStats();
+    //             this.displayStats();
+    //             document.getElementById("hel__btn").style.display = "none";
+    //             document.getElementById("nidavellir__btn").style.display = "flex";
+    //             document.getElementById("nidavellir__btn").addEventListener("click", this.nidavellir);
+    //         }
+    //         if(modgudr.lifepoints > 0 && this.name === "Embla"){
+    //             modgudr.displayStats();
+    //             this.displayStats();
+    //             modgudr.attackEmbla();
+    //         }else if(modgudr.lifepoints <= 0 && this.name === "Embla"){
+    //             alert("You have defeated Móðguðr!");
+    //             modgudr.displayStats();
+    //             this.displayStats();
+    //             document.getElementById("hel__btn").style.display = "none";
+    //             document.getElementById("nidavellir__btn").style.display = "flex";
+    //             document.getElementById("nidavellir__btn").addEventListener("click", this.nidavellir);
+    //         }
+    //     }else if(choice === "B"){
+    //         modgudr.lifepoints -= 50;
+    //         if(modgudr.lifepoints > 0 && this.name === "Ask"){
+    //             document.getElementById("hel-modal").style.display = "none";
+    //             modgudr.displayStats();
+    //             this.displayStats();
+    //             modgudr.attackAsk();
+    //         }else if(modgudr.lifepoints <= 0 && this.name === "Ask"){
+    //             alert("You have defeated Móðguðr!");
+    //             modgudr.displayStats();
+    //             this.displayStats();
+    //             document.getElementById("hel__btn").style.display = "none";
+    //             document.getElementById("nidavellir__btn").style.display = "flex";
+    //             document.getElementById("nidavellir__btn").addEventListener("click", this.nidavellir);
+    //         }
+    //         if(modgudr.lifepoints > 0 && this.name === "Embla"){
+    //             modgudr.displayStats();
+    //             this.displayStats();
+    //             modgudr.attackEmbla();
+    //         }else if(modgudr.lifepoints <= 0 && this.name === "Embla"){
+    //             alert("You have defeated Móðguðr!");
+    //             modgudr.displayStats();
+    //             this.displayStats();
+    //             document.getElementById("hel__btn").style.display = "none";
+    //             document.getElementById("nidavellir__btn").style.display = "flex";
+    //             document.getElementById("nidavellir__btn").addEventListener("click", this.nidavellir);
+    //         }
+    //     modgudr.displayStats();
+    //     this.displayStats();
+    //     }
+    // }
 
-    attackChoice(){
-        document.getElementById("fight-modal").style.display = "none";
-        //display enemy lifepoints//
-        let choice = prompt(`A) Attack using ${this.attack[0]} B)Attack using ${this.attack[1]}.`, "A/B");
-        if(choice === "A"){
-            modgudr.lifepoints -= 20;
-            console.log(modgudr);
-            if(modgudr.lifepoints >= 0 && this.name === Ask){
-                modgudr.attackAsk;
-            }else{
-                alert("You have defeated Móðguðr!")
-            }
-            if(modgudr.lifepoints >= 0 && this.name === Embla){
-                modgudr.attackEmbla;
-            }else{
-                alert("You have defeated Móðguðr!")
-            }
-        }else if(choice === "B"){
-            modgudr.lifepoints -= 50;
-            console.log(modgudr);
-            if(modgudr.lifepoints >= 0 && this.name === Ask){
-                modgudr.attackAsk;
-            }else{
-                alert("You have defeated Móðguðr!")
-            }
-            if(modgudr.lifepoints >= 0 && this.name === Embla){
-                modgudr.attackEmbla;
-            }else{
-                alert("You have defeated Móðguðr!")
-            }
-        }
+//level 5//
+    nidavellir(){
+    let level5 = prompt("You open your eyes to Dwarfs circling you. They are circling you and whispering. Finally one approaches and offers you their Mead of Poetry, a magickal liquid that makes the drinker express their truth compulsively. Do you drink?", "yes/no");
+    if(level5 === "yes"){
+        document.getElementById("nidavellir__btn").style.display = "none";
+        document.getElementById("muspellheim__btn").style.display = "flex";
+        document.getElementById("muspellheim__btn").addEventListener("click", this.muspellheim); 
+    }else if(level5 === "no"){
+        alert("The dwarfs couldn't trust you and they have left you to die with your wounds from Modgudr, Game Over");
     }
-    // nidavellir(){
+    }
+//level 6//
+    muspelheim(){
+        document.getElementById("muspelheim-modal").style.display = "flex";
+        document.getElementById("close-muspelheim").addEventListener("click", this.attackbtn);  
 
-   // }
-    // muspelheim(){}
-    // jotunhein(){}
-    // alfheim(){}
-    // asgard(){}
-    // ymir(){}
+    }
+//     // jotunhein(decision){}
+//     // alfheim(decision){}
+//     // asgard(decision){}
+//     // ymir(grand fight){}
 }
 
 
@@ -159,17 +218,52 @@ class Enemy{
         this.lifepoints = lifepoints,
         this.attack= attack
     }
+
     attackAsk(){
+        this.displayStats();
+        Ask.displayStats();
         Ask.lifepoints -= this.attack;
-        if(Ask.lifepoints > 0);
+        alert(`${this.name} attacked you and you have lost ${this.attack} life points.`);
+        if(Ask.lifepoints > 0){
+            Ask.attackChoice();
+        }else if (Ask.lifepoints <= 0){
+            alert(`${this.name} has defeated you. Game Over`);
+        }
+        if(Ask.lifepoints === this.lifepoints){
+            let deal= prompt(`${this.enemy} can see you are skilled and has no interest in dying today. She has offered to transport you to Nidavellir. Do you deny her offer and stay and fight?`, "yes/no");
+            if(deal==="yes"){
+                Ask.attackChoice();
+            }else if(deal === "no"){
+                document.getElementById("hel__btn").style.display = "none";
+                document.getElementById("nidavellir__btn").style.display = "flex";
+                document.getElementById("nidavellir__btn").addEventListener("click", Ask.nidavellir()); 
+            }
+        }
     }
     attackEmbla(){
         Embla.lifepoints -= this.attack;
-        if(Embla.lifepoints > 0);
+        alert(`${this.name} attacked you and you have lost ${this.attack} life points.`);
+        this.displayStats();
+        Embla.displayStats();
+        if(Embla.lifepoints > 0){
+            Embla.attackChoice();
+            this.displayStats();
+            Embla.displayStats();
+        }else if(Embla.lifepoints <= 0){
+            alert(`${this.name} has defeated you. Game Over`);
+            this.displayStats();
+            Embla.displayStats();
+        }
     }
+    displayStats(){
+        document.getElementById("enemy-display-points").innerHTML = `${this.lifepoints}`;
+        document.getElementById("enemy-display-kind").innerHTML = `${this.kind}`;
+        document.getElementById("enemy-display-attack").innerHTML = `${this.attack}`;
+    }
+
 }
 //Create Enemies
-const modgudr = new Enemy("Modgudr", "maer", "150", "100");
+const modgudr = new Enemy("Modgudr", "maer", "200", "50");
 const Surtr = new Enemy("Surtr", "Fire Giant", "300", "150");
 const stallo = new Enemy("Stallo", "Evil Wizard", "300", "100");
 const nokk = new Enemy("Nokk", "River Sprite", "150", "100"); 
@@ -188,12 +282,14 @@ const $modal = $("#intro-modal");//modal container
 const $modalText = $("#intro-text");//modal text
 const $openModal = $("#play-btn");//play button starts modal ***MAKE IT SO THEY CAN'T RECLICK THIS DURING GAME***
 const $closeModal = $("#close");//close link to close modal
+
 //character modal//
 const $charModal = $("#character-modal");//character modal container
 const $charText = $("#character-text");//character modal text box
 const $openChar = $("#character-btn");//open character modal
 const $closeChar = $("#close-char");//close link for character modal
 const $buttons = $(".game");
+
 //start Game//
 const $Ask = $("#ask");
 const $Embla = $("#embla");
@@ -202,6 +298,8 @@ const $healing = $("#display-healing");
 const $attack = $("display-attack");
 //play Game//
 const $Level1btn = $("#midgard__btn");
+//fight modal//
+
 
 ///////////////////////////create Event Handlers/////////////////////////////
 //intro modal//
@@ -247,7 +345,7 @@ const createEmbla = (event) => {
     $attack.html(`${Embla.attack}`);
     $Level1btn.on('click', Embla.midgard);
 }
-//play game//
+//fight modal//
 
 
 /////////////////////////create Event Listeners///////////////////////////////
@@ -260,7 +358,8 @@ $closeChar.on('click', closeChar);
 //start game//
 $Ask.on('click', createAsk);
 $Embla.on('click', createEmbla);
-//playGame//
+//fightmodal//
+
 
 
 });

@@ -63,6 +63,21 @@
                 <p id="display-attack"></p>
             </div>
         </div>
+        <div id="enemy-stats">
+            <div id= "enemy-lifepoints">
+                <h3>Life Points</h3>
+                <p id="enemy-display-points"></p>
+            </div>
+            <div id= "enemy-kind">
+                <h3>Type</h3>                    
+                <p id="enemy-display-kind"></p>
+            </div>
+            <div id= "enemy-attack">
+                <h3>Ways to Attack</h3>
+                <p id="enemy-display-attack"></p>
+            </div>
+            <img class="enemyImg" src="" alt="">
+        </div>
         <div id="container"></div>
         <button class="game" id = "asgard__btn">Return the Peace Offering</button>
         <button class="game" id = "vanaheim__btn">Retrieve the Peace Offering</button>
@@ -74,13 +89,28 @@
         <button class="game" id = "hel__btn">Hel</button>
         <button class="game" id = "niflheim__btn">Niflheim</button>
         </div>
+        <div id = "hel-modal">
+            <div id="hel-text">
+                <a id="close-hel" href="#">Close</a>
+                <h1>Welcome to <span id= "hel-level">Hel</span></h1>
+                <img id = "hel-img" src="/Users/mainframe/code/README/Images/bridge through trees.jpeg" alt="Eerie bridge through trees" width="200px" height="250px">
+                <div id = "hel-text"> <p>You have made it through the desolation of Nifliheim. Relieved for a moment you approach the bridge to Hel, where dead souls travel to live out their existence in an alternate reality. But as you cross the bridge you are are met by the mysterious Móðguðr, the guardian of the river Gjöll. Clearly you are not dead, yet, and she explains you cannot go through Hel alive. Determined you accept the challenge to fight to the death. Móðguðr is neither dead or alive, so choose your attacks wisely!
+                </p>
+            </div>
+        </div>
         <div id = "fight-modal">
             <div id="fight-text">
-                <a id="close-fight" href="#">Close</a>
-                <h1>Welcome to <span id= "fight-level">Hel</span></h1>
-                <img id = "fight-img" src="/Users/mainframe/code/README/Images/bridge through trees.jpeg" alt="Eerie bridge through trees" width="200px" height="250px">
-                <div id = "fight-text"> <p>You have made it through the desolation of Nifliheim. Relieved for a moment you approach the bridge to Hel, where dead souls travel to live out their existence in an alternate reality. But as you cross the bridge you are are met by the mysterious Móðguðr, the guardian of the river Gjöll. Clearly you are not dead, yet, and she explains you cannot go through Hel alive. Determined you accept the challenge to fight to the death. Móðguðr is neither dead or alive, so choose your attacks wisely!
-                </p>
+                <a id="close-fight" href="#">End</a>
+                <div>
+                    <p id= "displayChar"></p>
+                </div>
+                <div>
+                    <img class= "enemyImg" src="" alt="">
+                    <p id= "displayEnemy"></p>
+                </div>
+                <div>
+                    <button id="attackbtn"></button>
+                </div>
             </div>
         </div>
     </main>
