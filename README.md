@@ -9,7 +9,7 @@
 
 ## Concept:
 
-The 9 realms of Yggdrasil is a fantasy story game in which the player makes decisions through out the 9 realms of the multiverse tree to save their home world, Midgard. A web of options are created allowing for different outcomes each time the user plays. 
+The 9 realms of Yggdrasil is a RPG style game in which the player makes decisions through out the 9 realms of the multiverse tree to save their home world, Midgard. A web of options are created allowing for different outcomes each time the user plays. 
 
 ## Technologies Used:
 
