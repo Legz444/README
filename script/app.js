@@ -20,7 +20,7 @@ class Character{
     this.vanaheim = this.vanaheim.bind(this)
     this.niflheim = this.niflheim.bind(this)
     this.hel = this.hel.bind(this)
-    this.attackChoice = this.attackChoice.bind(this)
+    // this.attackChoice = this.attackChoice.bind(this)
     this.attackbtn = this.attackbtn.bind(this)
     }
     displayStats(){
@@ -44,9 +44,9 @@ class Character{
             if(answer === "yes"){
                 this.lifepoints += 100;
                 if(this.name === "Ask"){
-                    this.attack.push("Sword: 50");
+                    this.attack.push("Sword: 100");
                 }else if (this.name === "Embla"){
-                    this.attack.push("Magick Staff: 50");
+                    this.attack.push("Magick Staff: 100");
                 }
                 console.log(this);
                 document.getElementById("midgard__btn").style.display = "none";
@@ -99,10 +99,45 @@ class Character{
         }
 //level4
     hel(){
-        document.getElementById("hel-modal").style.display = "flex";
-        document.getElementById("close-hel").addEventListener("click", this.attack);    
+        let level4 = prompt(`Welcome to Hel. You have made it through the desolation of Nifliheim. Relieved for a moment you approach the bridge to Hel, where dead souls travel to live out their existence in an alternate reality. But as you cross the bridge you are are met by the mysterious Móðguðr, the guardian of the river Gjöll. Clearly you are not dead, yet, and she explains you cannot go through Hel alive. Determined you accept the challenge to fight to the death. Móðguðr is neither dead or alive, so choose your attacks wisely! Do you A) Attack her with ${this.attack[0]}? or B) Attack her with ${this.attack[1]}?`);
+        if(level4 === "A"){
+            //mod has 180 life //
+            this.lifepoints = 0;
+            this.displayStats();
+            alert(`This is a weak attack, Móðguðr comes back and destroys you, GAME OVER!`);
+        }else if(level4 === "B"){ 
+            let deal = prompt(`This was a good a choice. You have lowered Móðguðr life by 100. She recognizes the weapon from Odin and she offers you a deal: spare her life and give her a gift, and she will transport you to Nidavellir!`, "Go/Stay");
+            if(deal === "Go"){
+                this.healing.pop();
+                document.getElementById("hel__btn").style.display = "none";
+                document.getElementById("nidavellir__btn").style.display = "flex";
+                document.getElementById("nidavellir__btn").addEventListener("click", this.nidavellir);
+                this.displayStats();
+            }else if(deal === "Stay"){
+                alert(`Móðguðr offers you a new deal, she takes your life and allows you to enter Hel, but never to leave. GAME OVER`);
+                this.lifepoints = 0;
+                this.displayStats();
+            }
+        }
     }
-    attack(){
+    //level 5//
+    nidavellir(){
+        let level5 = prompt("You open your eyes to Dwarfs circling you and whispering. Finally one approaches and offers you their Mead of Poetry, a magickal liquid that makes the drinker express their truth compulsively. Do you drink?", "yes/no");
+        if(level5 === "yes"){
+            document.getElementById("nidavellir__btn").style.display = "none";
+            document.getElementById("muspelheim__btn").style.display = "flex";
+            document.getElementById("muspelheim__btn").addEventListener("click", this.muspelheim); 
+        }else if(level5 === "no"){
+            alert("The dwarfs couldn't trust you and they have left you to die with your wounds from Modgudr, Game Over");
+        }
+    }
+    //level 6//
+    muspelheim(){
+        document.getElementById("muspelheim-modal").style.display = "flex";
+        document.getElementById("close-muspelheim").addEventListener("click", this.attackbtn);  
+
+    }
+    attackbtn(){
         const attackbtn = document.createElement("BUTTON");
             attackbtn.innerHTML = "ATTACK";
             attackbtn.id = "attack-btn"
@@ -186,23 +221,8 @@ class Character{
     //     }
     // }
 
-//level 5//
-    nidavellir(){
-    let level5 = prompt("You open your eyes to Dwarfs circling you. They are circling you and whispering. Finally one approaches and offers you their Mead of Poetry, a magickal liquid that makes the drinker express their truth compulsively. Do you drink?", "yes/no");
-    if(level5 === "yes"){
-        document.getElementById("nidavellir__btn").style.display = "none";
-        document.getElementById("muspellheim__btn").style.display = "flex";
-        document.getElementById("muspellheim__btn").addEventListener("click", this.muspellheim); 
-    }else if(level5 === "no"){
-        alert("The dwarfs couldn't trust you and they have left you to die with your wounds from Modgudr, Game Over");
-    }
-    }
-//level 6//
-    muspelheim(){
-        document.getElementById("muspelheim-modal").style.display = "flex";
-        document.getElementById("close-muspelheim").addEventListener("click", this.attackbtn);  
 
-    }
+
 //     // jotunhein(decision){}
 //     // alfheim(decision){}
 //     // asgard(decision){}
@@ -326,7 +346,7 @@ const createAsk = (event) => {
     const $currentPlayer = $(`<div class="current__player"><h1>Ask~Viking</h1><img src="/Users/mainframe/code/README/Images/vikingcharacter.png" alt="Viking Character" width="250px" height="200px"></div>`);
     $("body").append($currentPlayer);
     $Level1btn.css("display", "flex");
-    Ask = new Character ("Ask", 100, ["Comfrey Leaves"], ["Spear: 20"]);
+    Ask = new Character ("Ask", 100, ["Comfrey Leaves"], ["Speer: 20"]);
     $lifepoints.html(`${Ask.lifepoints}`);
     $healing.html(`${Ask.healing}`);
     $attack.html(`${Ask.attack}`);
@@ -363,7 +383,4 @@ $Embla.on('click', createEmbla);
 
 
 });
-
-
-
 
